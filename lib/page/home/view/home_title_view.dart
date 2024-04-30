@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../dialog/about_audio_checker_dialog.dart';
+import '../../../dialog/about_dialog.dart';
 import '../../../static/assets_img.dart';
 import '../../../static/assets_svg.dart';
 import '../../../utils/padding_utils.dart';
@@ -36,7 +36,7 @@ class HomeTitleView extends StatelessWidget {
     await showDialog(
       context: context,
       builder: (context) {
-        return const AboutAudioCheckerDialog();
+        return const AboutOhosAppToolsDialog();
       },
     );
   }

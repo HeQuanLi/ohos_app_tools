@@ -7,15 +7,15 @@ import '../../../widgets/common/svg_asset.dart';
 
 import '../static/assets_img.dart';
 
-class AboutAudioCheckerDialog extends StatefulWidget {
-  const AboutAudioCheckerDialog({super.key});
+class AboutOhosAppToolsDialog extends StatefulWidget {
+  const AboutOhosAppToolsDialog({super.key});
 
   @override
-  State<AboutAudioCheckerDialog> createState() =>
-      _AboutAudioCheckerDialogState();
+  State<AboutOhosAppToolsDialog> createState() =>
+      _AboutOhosAppToolsDialogState();
 }
 
-class _AboutAudioCheckerDialogState extends State<AboutAudioCheckerDialog> {
+class _AboutOhosAppToolsDialogState extends State<AboutOhosAppToolsDialog> {
   @override
   Widget build(BuildContext context) {
     return Material(
