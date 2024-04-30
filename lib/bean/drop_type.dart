@@ -1,0 +1,1 @@
+enum DropType { signed, install }

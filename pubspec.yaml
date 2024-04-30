@@ -30,13 +30,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_svg: ^1.1.6
+  dotted_border: ^2.0.0+3
+  desktop_drop: ^0.4.2
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.3
+  shared_preferences: ^2.2.1
+  process_run: ^0.13.1
+  path: ^1.8.3
+  file_selector: ^1.0.1
+  file_picker: ^8.0.0+1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  json_serializable: ^6.8.0
+  build_runner: ^2.4.9
   flutter_test:
     sdk: flutter
 
@@ -57,7 +68,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  assets:
+    - assets/img/
+    - assets/svg/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
