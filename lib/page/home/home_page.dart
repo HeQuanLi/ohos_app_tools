@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future setWindowSize() async {
-    const size = Size(600, 600);
+    const size = Size(800, 700);
     await DesktopWindow.setWindowSize(size);
     await DesktopWindow.setMinWindowSize(size);
   }

@@ -13,6 +13,7 @@ SingPathInfo _$SingPathInfoFromJson(Map<String, dynamic> json) => SingPathInfo(
       json['p12Path'] as String,
       json['alias'] as String,
       json['pwd'] as String,
+      json['packageName'] as String,
     );
 
 Map<String, dynamic> _$SingPathInfoToJson(SingPathInfo instance) =>
@@ -23,4 +24,5 @@ Map<String, dynamic> _$SingPathInfoToJson(SingPathInfo instance) =>
       'p12Path': instance.p12Path,
       'alias': instance.alias,
       'pwd': instance.pwd,
+      'packageName': instance.packageName,
     };

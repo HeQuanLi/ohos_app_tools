@@ -28,6 +28,7 @@ class _SettingDialog extends State<SettingDialog> {
   final _p12PathController = TextEditingController();
   final _aliasController = TextEditingController();
   final _pwdController = TextEditingController();
+  final _packageNameController = TextEditingController();
 
   @override
   void initState() {
@@ -58,6 +59,7 @@ class _SettingDialog extends State<SettingDialog> {
                   itemConfig(".cer地址：", true, _cerPathController),
                   itemConfig(".p7b地址：", true, _p7bPathController),
                   itemConfig(".p12地址：", true, _p12PathController),
+                  itemConfig("包名：", false, _packageNameController),
                   itemConfig("alias：", false, _aliasController),
                   itemConfig("密码：", false, _pwdController),
                   sureBtn()
@@ -194,7 +196,8 @@ class _SettingDialog extends State<SettingDialog> {
         _p7bPathController.text,
         _p12PathController.text,
         _aliasController.text,
-        _pwdController.text);
+        _pwdController.text,
+        _packageNameController.text);
     _saveValue(jsonEncode(singPathInfo.toJson()));
     Navigator.pop(context);
     callback(singPathInfo);
@@ -216,6 +219,7 @@ class _SettingDialog extends State<SettingDialog> {
       _p12PathController.text = singPathInfo.p12Path;
       _aliasController.text = singPathInfo.alias;
       _pwdController.text = singPathInfo.pwd;
+      _packageNameController.text = singPathInfo.packageName;
     }
   }
 }

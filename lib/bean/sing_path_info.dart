@@ -22,6 +22,9 @@ class SingPathInfo {
   @JsonKey(name: 'pwd')
   String pwd;
 
+  @JsonKey(name: 'packageName')
+  String packageName;
+
   SingPathInfo(
     this.signToolPath,
     this.cerPath,
@@ -29,6 +32,7 @@ class SingPathInfo {
     this.p12Path,
     this.alias,
     this.pwd,
+    this.packageName,
   );
 
   factory SingPathInfo.fromJson(Map<String, dynamic> srcJson) =>

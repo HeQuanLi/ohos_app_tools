@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +66,7 @@ class _HomeContentViewState extends State<HomeContentView> {
       child: DropTarget(
         //拖拽完成
         onDragDone: (DropDoneDetails detail) {
-          bloc.add(DragDoneEvent(detail));
+          bloc.add(DragDoneEvent(detail, type));
         },
         //拖拽进入
         onDragEntered: (detail) {

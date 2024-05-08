@@ -11,8 +11,9 @@ class CleanEvent extends HomeEvent {}
 ///拖拽完成
 class DragDoneEvent extends HomeEvent {
   final DropDoneDetails details;
+  final DropType type;
 
-  DragDoneEvent(this.details) : super();
+  DragDoneEvent(this.details, this.type) : super();
 }
 
 ///拖拽进入
