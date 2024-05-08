@@ -2,6 +2,7 @@ import zipfile
 import os
 import subprocess
 import shutil
+import sys
 
 def unzip_app_and_send_files(app_file, package_name, extracted_dir, signed_dir):
     clean_directories(extracted_dir, signed_dir, out_put_file_dir)
@@ -55,13 +56,39 @@ profile_file_path="/Users/hequanli/HarmonyCode/jojo-read/cer/jojo-ohos-debug.p7b
 k12_path = "/Users/hequanli/HarmonyCode/jojo-read/cer/jojo-ohos.p12"
 alias = "ohos"
 pwd = "TNT999233"
+package_name = "com.shusheng.hm.JoJoRead"
 
 app_file_path = os.path.dirname(app_file)
 file_name = os.path.basename(app_file)
-package_name = "com.shusheng.hm.JoJoRead"
 extracted_dir = app_file_path + "/zip"
 signed_dir = app_file_path + "/signed"
 out_put_file_dir = app_file_path + "/out/"
 out_put_file_path = out_put_file_dir + file_name
 
-unzip_app_and_send_files(app_file, package_name, extracted_dir, signed_dir)
+if __name__ == "__main__":
+    # 检查是否提供了正确的参数数量
+    if len(sys.argv) != 2:
+        print("Usage: python script.py app_file package_name extracted_dir signed_dir")
+        sys.exit(1)
+
+    # 从命令行参数中获取传入的值
+    app_file = sys.argv[1]
+    hap_sign_tool = sys.argv[2]
+    cer_path = sys.argv[3]
+    profile_file_path = sys.argv[4]
+    k12_path = sys.argv[5]
+    alias = sys.argv[6]
+    pwd = sys.argv[7]
+    package_name = sys.argv[8]
+
+    print("app_file："+app_file)
+    print("hap_sign_tool："+hap_sign_tool)
+    print("cer_path："+cer_path)
+    print("profile_file_path："+profile_file_path)
+    print("k12_path："+k12_path)
+    print("alias："+alias)
+    print("pwd："+pwd)
+    print("package_name："+package_name)
+
+    # 调用函数并传入参数
+    unzip_app_and_send_files(app_file, package_name, extracted_dir, signed_dir)
