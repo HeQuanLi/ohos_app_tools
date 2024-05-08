@@ -1,6 +1,7 @@
 import zipfile
 import os
 import subprocess
+import sys
 
 def unzip_app_and_send_files(app_file, package_name, extracted_dir):
     unzip_app(app_file, extracted_dir)
@@ -35,10 +36,21 @@ def start_app(package_name):
     subprocess.run(f"hdc shell aa start -a AppAbility -b {package_name}", shell=True)
     print("启动成功")
 
-# 示例用法：
-app_file = "/Users/hequanli/Desktop/ohos/out/jojo-read-default-signed.app"
-package_name = "com.shusheng.hm.JoJoRead"
+if __name__ == "__main__":
+    # 检查是否提供了正确的参数数量
+    if len(sys.argv) < 2:
+        print("Usage: python script.py app_file package_name")
+        sys.exit(1)
 
-app_file_path = os.path.dirname(app_file)
-extracted_dir = app_file_path + "/zip"
-unzip_app_and_send_files(app_file, package_name, extracted_dir)
+    # 从命令行参数中获取传入的值
+    app_file = sys.argv[1]
+    package_name = sys.argv[2]
+
+    app_file_path = os.path.dirname(app_file)
+    extracted_dir = app_file_path + "/zip"
+
+    print("app_file："+app_file)
+    print("package_name："+package_name)
+
+    # 调用函数并传入参数
+    unzip_app_and_send_files(app_file, package_name, extracted_dir)

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:process_run/process_run.dart';
 
+import '../../../bean/drop_type.dart';
 import '../../../bean/sing_path_info.dart';
 import '../../../static/assets_py.dart';
 import '../../../utils/constant_utils.dart';
@@ -55,14 +56,26 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
     Map<String, dynamic> map = json.decode(result);
     SingPathInfo singPathInfo = SingPathInfo.fromJson(map);
-    _executePy(appFile, singPathInfo);
+    if (event.type == DropType.signed) {
+      debugPrint("签名");
+      _signedApp(appFile, singPathInfo);
+    } else {
+      debugPrint("安装");
+      _installApp(appFile, singPathInfo);
+    }
   }
 
-  _executePy(String appFile, SingPathInfo singPathInfo) async {
+  _signedApp(String appFile, SingPathInfo singPathInfo) async {
     var shell = Shell(verbose: false);
     debugPrint("开始执行");
-    await shell.run(
-        "python3 ${AssetsPy.ohos_app_signed} $appFile ${singPathInfo.signToolPath} ${singPathInfo.cerPath} ${singPathInfo.p7bPath} ${singPathInfo.p12Path} ${singPathInfo.alias} ${singPathInfo.pwd} ${singPathInfo.packageName}");
+    await shell.run("python3 ${AssetsPy.ohos_app_signed} $appFile ${singPathInfo.signToolPath} ${singPathInfo.cerPath} ${singPathInfo.p7bPath} ${singPathInfo.p12Path} ${singPathInfo.alias} ${singPathInfo.pwd} ${singPathInfo.packageName}");
+    debugPrint("执行完成");
+  }
+
+  _installApp(String appFile, SingPathInfo singPathInfo) async {
+    var shell = Shell(verbose: false);
+    debugPrint("开始执行");
+    await shell.run("python3 ${AssetsPy.ohos_app_install} $appFile ${singPathInfo.packageName}");
     debugPrint("执行完成");
   }
 }

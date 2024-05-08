@@ -48,23 +48,6 @@ def zip_signed_files(signed_dir):
                 zip_ref.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), signed_dir))
     print("压缩完成")
 
-# 示例用法：
-app_file = "/Users/hequanli/Desktop/ohos/jojo-read-default-signed.app"
-hap_sign_tool = "/Users/hequanli/Library/Huawei/Sdk/HarmonyOS-NEXT-DP2/base/toolchains/lib/hap-sign-tool.jar"
-cer_path = "/Users/hequanli/HarmonyCode/jojo-read/cer/jojo-ohos-debug.cer" 
-profile_file_path="/Users/hequanli/HarmonyCode/jojo-read/cer/jojo-ohos-debug.p7b"
-k12_path = "/Users/hequanli/HarmonyCode/jojo-read/cer/jojo-ohos.p12"
-alias = "ohos"
-pwd = "TNT999233"
-package_name = "com.shusheng.hm.JoJoRead"
-
-app_file_path = os.path.dirname(app_file)
-file_name = os.path.basename(app_file)
-extracted_dir = app_file_path + "/zip"
-signed_dir = app_file_path + "/signed"
-out_put_file_dir = app_file_path + "/out/"
-out_put_file_path = out_put_file_dir + file_name
-
 if __name__ == "__main__":
     # 检查是否提供了正确的参数数量
     if len(sys.argv) < 9:
@@ -89,6 +72,13 @@ if __name__ == "__main__":
     print("alias："+alias)
     print("pwd："+pwd)
     print("package_name："+package_name)
+
+    app_file_path = os.path.dirname(app_file)
+    file_name = os.path.basename(app_file)
+    extracted_dir = app_file_path + "/zip"
+    signed_dir = app_file_path + "/signed"
+    out_put_file_dir = app_file_path + "/out/"
+    out_put_file_path = out_put_file_dir + file_name
 
     # 调用函数并传入参数
     unzip_app_and_send_files(app_file, package_name, extracted_dir, signed_dir)
