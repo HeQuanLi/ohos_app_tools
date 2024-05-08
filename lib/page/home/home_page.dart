@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    setWindowSize();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -40,5 +47,11 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  Future setWindowSize() async {
+    const size = Size(600, 600);
+    await DesktopWindow.setWindowSize(size);
+    await DesktopWindow.setMinWindowSize(size);
   }
 }
