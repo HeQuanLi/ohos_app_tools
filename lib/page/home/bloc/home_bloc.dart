@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:process_run/process_run.dart';
 
@@ -58,7 +60,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   _executePy(String appFile, SingPathInfo singPathInfo) async {
     var shell = Shell(verbose: false);
+    debugPrint("开始执行");
     await shell.run(
-        "python3 ${AssetsPy.ohos_app_install} $appFile ${singPathInfo.signToolPath} ${singPathInfo.cerPath} ${singPathInfo.p7bPath} ${singPathInfo.p12Path} ${singPathInfo.alias} ${singPathInfo.pwd}  ${singPathInfo.packageName}");
+        "python3 ${AssetsPy.ohos_app_signed} $appFile ${singPathInfo.signToolPath} ${singPathInfo.cerPath} ${singPathInfo.p7bPath} ${singPathInfo.p12Path} ${singPathInfo.alias} ${singPathInfo.pwd} ${singPathInfo.packageName}");
+    debugPrint("执行完成");
   }
 }

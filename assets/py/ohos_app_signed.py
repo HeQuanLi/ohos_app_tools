@@ -67,7 +67,7 @@ out_put_file_path = out_put_file_dir + file_name
 
 if __name__ == "__main__":
     # 检查是否提供了正确的参数数量
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 9:
         print("Usage: python script.py app_file package_name extracted_dir signed_dir")
         sys.exit(1)
 
