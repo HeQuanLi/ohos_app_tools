@@ -12,6 +12,6 @@
 
 # 下载地址
 - Macos
-[下载地址](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FHeQuanLi%2Fohos_app_tools%2Fblob%2Fmaster%2Fapp%2Fmacos%2F%25E9%25B8%25BF%25E8%2592%2599App%25E5%25B7%25A5%25E5%2585%25B7%25E5%258A%25A9%25E6%2589%258B.zip)
+[下载地址](https://github.com/HeQuanLi/ohos_app_tools/blob/master/app/macos/%E9%B8%BF%E8%92%99App%E5%B7%A5%E5%85%B7%E5%8A%A9%E6%89%8B.zip)
 - win
 暂未打包
