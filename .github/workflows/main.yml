@@ -23,6 +23,10 @@ jobs:
 
     - name: Build macOS app
       run: flutter build macos
+    - name: look product
+      run: cd build/macos/Build/Products/Release
+    - name: ls product
+      run: ls -l
     - name: Upload macOS Release
       uses: actions/upload-artifact@v3
       with:
