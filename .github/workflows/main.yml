@@ -33,5 +33,5 @@ jobs:
     - name: Upload macOS Release
       uses: actions/upload-artifact@v3
       with:
-        name: macos-app
-        path: build/macos/Build/Products/Release/鸿蒙App工具助手.app
+        name: 鸿蒙App工具助手.app
+        path: build/macos/Build/Products/out/
