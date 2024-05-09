@@ -29,7 +29,7 @@ jobs:
     - name: move file
       run: mv build/macos/Build/Products/Release/鸿蒙App工具助手.app build/macos/Build/Products/out/
     - name: Upload macOS Release
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: 鸿蒙App工具助手.app
         path: build/macos/Build/Products/out/
