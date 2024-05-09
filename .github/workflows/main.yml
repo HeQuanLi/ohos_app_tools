@@ -27,6 +27,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: macos-app
-        path: build/macos/Build/Products/Release/lotus_bridge_window.app
+        path: build/macos/Build/Products/Release/叫叫音效助手.app
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
