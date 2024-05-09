@@ -24,23 +24,13 @@ jobs:
     - name: Build macOS app
       run: flutter build macos
 
-  release:
-    name: Release artifacts
-    needs: build
-    runs-on: macos-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    - name: Zip macOS app
+      run: |
+        cd build/macos/
+        zip -r macOS-app.zip Runner.app
 
-    steps:
-    - name: Download macOS artifacts
-      uses: actions/download-artifact@v2
+    - name: Upload macOS artifact
+      uses: actions/upload-artifact@v2
       with:
         name: macOS-app
-
-    - name: Create macOS Release
-      uses: NCAR/github-actions-create-release@v1
-      with:
-        tag_name: ${{ github.sha }}
-        release_name: Release ${{ github.sha }}
-        body: |
-          Automatically created release by GitHub Actions.
-        artifact_path: build/macos/Runner.app
+        path: build/macos/macOS-app.zip
