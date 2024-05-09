@@ -5,7 +5,7 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = ohos_app_tools
+PRODUCT_NAME = 鸿蒙App工具助手
 
 // The application's bundle identifier
 PRODUCT_BUNDLE_IDENTIFIER = com.byhk.ohosapptools.ohosAppTools
