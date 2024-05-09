@@ -24,5 +24,23 @@ jobs:
     - name: Build macOS app
       run: flutter build macos
 
-    - name: Build Windows app
-      run: flutter build windows
+  release:
+    name: Release artifacts
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Download macOS artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: macOS-app
+
+    - name: Create macOS Release
+      uses: NCAR/github-actions-create-release@v1
+      with:
+        tag_name: ${{ github.sha }}
+        release_name: Release ${{ github.sha }}
+        body: |
+          Automatically created release by GitHub Actions.
+        artifact_path: build/macos/Runner.app
