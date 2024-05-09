@@ -23,14 +23,10 @@ jobs:
 
     - name: Build macOS app
       run: flutter build macos
-
-    - name: Zip macOS app
-      run: |
-        cd build/macos/
-        zip -r macOS-app.zip Runner.app
-
-    - name: Upload macOS artifact
-      uses: actions/upload-artifact@v2
+    - name: Upload macOS Release
+      uses: actions/upload-artifact@v3
       with:
-        name: macOS-app
-        path: build/macos/macOS-app.zip
+        name: macos-app
+        path: build/macos/Build/Products/Release/lotus_bridge_window.app
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
