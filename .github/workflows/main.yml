@@ -23,14 +23,15 @@ jobs:
 
     - name: Build macOS app
       run: flutter build macos
-    - name: look product
-      run: cd build/macos/Build/Products/Release
-    - name: ls product
-      run: ls -l
+    
+    - name: mkdir temp folder
+      run: mkdir build/macos/Build/Products/out/
+    - name: mkdir new folder
+      run: mkdir build/macos/Build/Products/out/鸿蒙App工具助手
+    - name: move file
+      run: build/macos/Build/Products/Release/鸿蒙App工具助手.app/* build/macos/Build/Products/out/鸿蒙App工具助手/
     - name: Upload macOS Release
       uses: actions/upload-artifact@v3
       with:
         name: macos-app
         path: build/macos/Build/Products/Release/鸿蒙App工具助手.app
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
