@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: Build macOS and Windows apps
+    name: Build macOS apps
     runs-on: macos-latest
 
     steps:
