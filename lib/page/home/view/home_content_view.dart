@@ -1,10 +1,12 @@
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../../bean/drop_type.dart';
 import '../../../static/assets_img.dart';
 import '../../../static/assets_svg.dart';
 import '../../../utils/padding_utils.dart';
+import '../../../utils/text_utils.dart';
 import '../../../widgets/common/img_asset.dart';
 import '../../../widgets/common/svg_asset.dart';
 import '../bloc/home_bloc.dart';
@@ -31,32 +33,56 @@ class _HomeContentViewState extends State<HomeContentView> {
       child: Container(
         padding: const EdgeInsets.all(14.0),
         width: double.infinity,
-        child: _showContent(state, bloc),
+        child: _content(state, bloc),
       ),
     );
   }
 
-  //显示内容
-  Widget _showContent(HomeState state, HomeBloc bloc) {
-    // if (state.showAudioList.isEmpty) {
-    //   //为空
-    //   return _emptyContent(state, bloc);
-    // } else {
-    //   if (state.detectionStatus == DetectionStatus.init) {
-    //     bloc.add(DetectionStartEvent(state.showAudioList));
-    //   }
-    //   return _listContent(state, bloc);
-    // }
-    //为空
-    return _emptyContent(state, bloc);
-  }
-
-  Widget _emptyContent(HomeState state, HomeBloc bloc) {
-    return Row(
+  Widget _content(HomeState state, HomeBloc bloc) {
+    return Stack(
       children: [
-        _dropTarget(state, bloc, DropType.signed),
-        padding(left: 5, right: 5),
-        _dropTarget(state, bloc, DropType.install),
+        Row(
+          children: [
+            _dropTarget(state, bloc, DropType.signed),
+            padding(left: 5, right: 5),
+            _dropTarget(state, bloc, DropType.install),
+          ],
+        ),
+        Visibility(
+          visible: state.execute == Execute.running,
+          child: Center(
+            child: Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.amber[400],
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: const [
+                  //阴影
+                  BoxShadow(
+                    color: Colors.black54,
+                    offset: Offset(10.0, 10.0),
+                    blurRadius: 15.0,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LoadingAnimationWidget.fourRotatingDots(
+                    color: Colors.white,
+                    size: 100,
+                  ),
+                  padding(top: 10),
+                  normalText(
+                    state.type == DropType.signed ? "签名中..." : "安装中...",
+                    color: 0xFFFFFFFF,
+                  )
+                ],
+              ),
+            ),
+          ),
+        )
       ],
     );
   }

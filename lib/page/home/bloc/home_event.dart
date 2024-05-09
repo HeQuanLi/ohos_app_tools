@@ -5,8 +5,12 @@ import '../../../bean/drop_type.dart';
 ///home事件类
 sealed class HomeEvent {}
 
-///清空事件
-class CleanEvent extends HomeEvent {}
+///执行事件，(签名 or 安装)
+class ExecuteEvent extends HomeEvent {
+  final DropType type;
+
+  ExecuteEvent(this.type);
+}
 
 ///拖拽完成
 class DragDoneEvent extends HomeEvent {
