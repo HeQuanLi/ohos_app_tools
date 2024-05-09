@@ -26,10 +26,8 @@ jobs:
     
     - name: mkdir temp folder
       run: mkdir build/macos/Build/Products/out/
-    - name: mkdir new folder
-      run: mkdir build/macos/Build/Products/out/鸿蒙App工具助手
     - name: move file
-      run: mv build/macos/Build/Products/Release/鸿蒙App工具助手.app/* build/macos/Build/Products/out/鸿蒙App工具助手/
+      run: mv build/macos/Build/Products/Release/鸿蒙App工具助手.app build/macos/Build/Products/out/
     - name: Upload macOS Release
       uses: actions/upload-artifact@v3
       with:
