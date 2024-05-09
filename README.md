@@ -1,5 +1,9 @@
 # 简介
-鸿蒙App工具助手，可以进行鸿蒙app重签名和手机app安装
+鸿蒙App工具助手，Harmony next 测试安装鸿蒙Next App解决方案。
+
+可以进行鸿蒙app重签名和手机app安装。
+
+支持单HAP+[可选]多HSP
 
 # UI 效果
 ![图片1](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fed61363b4ce471193e7986701d34fd1~tplv-k3u1fbpfcp-jj-mark:3024:0:0:0:q75.awebp#?w=793&h=692&s=38494&e=png&b=e8eadb)
